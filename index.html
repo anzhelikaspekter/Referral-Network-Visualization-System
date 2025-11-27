@@ -1,0 +1,1266 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- Author & Ownership -->
+    <meta name="author" content="Anzhelika Spekter">
+    <meta name="creator" content="Anzhelika Spekter">
+    <meta name="publisher" content="Anzhelika Spekter">
+
+    <!-- SEO -->
+    <title>Referral Network Visualization System</title>
+    <meta name="description"
+        content="Interactive multi-level referral tree visualization with dynamic canvas lines, panoramic navigation and responsive user mapping.">
+
+    <!-- App PWA skin -->
+    <meta name="theme-color" content="#0b0f19">
+
+    <!-- Social / OpenGraph -->
+    <meta property="og:title" content="Referral Network Visualization System">
+    <meta property="og:description"
+        content="Dynamic user-referral hierarchy renderer with canvas relationship drawing and panoramic navigation controls.">
+    <meta property="og:image" content="img/preview-og.webp">
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://your-netlify-or-github-link">
+
+    <!-- Twitter Card (SEO boost) -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Referral Network Visualization System">
+    <meta name="twitter:description"
+        content="Animated multi-tier network tree UI with canvas ties and live tooltip layers.">
+    <meta name="twitter:image" content="img/preview-tw.webp">
+    <meta property="twitter:image:width" content="1024" />
+    <meta property="twitter:image:height" content="512" />
+
+    <!-- Favicon -->
+    <link rel="icon" type="image/png" href="favicon.ico">
+
+    <!-- Styles -->
+    <link rel="stylesheet" href="css/style.min.css">
+</head>
+
+
+<body style="background-color: var(--bg-color);">
+    <section class="referral">
+        <div class="referral__wrap" id="currentLevel">
+            <article class="referral__card" id="gridSystem">
+                <header class="referral__card-header">
+                    <h2 class="referral__card-header-title">Referral Structure Visualization System</h2>
+                    <p class="referral__card-header-desc">Interactive tree-based mapping of referral hierarchy with live
+                        node expansion, connection rendering, and dynamic UI-driven data layers.</p>
+                </header>
+                <div class="referral__grid-wrap dragging">
+                    <div class="referral__grid-canvas">
+                        <canvas class="referral__grid-lines"></canvas>
+                        <div class="referral__grid">
+                            <div class="referral__grid-item"></div>
+                            <div class="referral__grid-item" data-id="1" data-parent="">
+                                <article class="referral__grid-card active" data-user="1">
+                                    <h3 class="referral__grid-status"><span class="dot"></span> Inactive</h3>
+                                    <button type="button" class="referral__grid-card-user" data-toggle="tooltip"
+                                        data-user="1">
+                                        <img src="img/dev.webp" width="40" height="40" alt=""
+                                            class="referral__grid-card-user-img">
+                                        <div class="referral__grid-card-user-title-wrap">
+                                            <h4 class="referral__grid-card-user-title">Anzhelika Spekter</h4>
+                                            <a href="mailto:dev@yourdomain.com"
+                                                class="referral__grid-card-user-desc">dev@yourdomain.com</a>
+                                        </div>
+                                        <p class="referral__grid-card-user-sum">5,2k $</p>
+                                    </button>
+                                    <div class="referral__grid-user-tooltip" data-user="1" hidden>
+                                        <dl>
+                                            <dd>Rank</dd>
+                                            <dt><img src="img/gold.svg" width="20" height="20" alt=""
+                                                    class="referral__grid-user-tooltip-icon"> Gold</dt>
+
+                                            <dd>Line (Level)</dd>
+                                            <dt>L2</dt>
+
+                                            <dd>Upline</dd>
+                                            <dt>A. Black (L1)</dt>
+
+                                            <dd>Turnover</dd>
+                                            <dt>$18,750 <span class="desc">(last 30 days)</span></dt>
+
+                                            <dd>Registration Date</dd>
+                                            <dt><time datetime="2008-01-14">14 Jan 2008</time></dt>
+
+                                            <dd>Deposit Amount</dd>
+                                            <dt>$4,200</dt>
+
+                                            <dd>First Deposit</dd>
+                                            <dt><time datetime="2008-02-20">20 Feb 2008</time></dt>
+
+                                            <dd>Last Deposit</dd>
+                                            <dt><time datetime="2025-03-12">12 Mar 2025</time></dt>
+
+                                            <dd>Last Deposit</dd>
+                                            <dt><a href="mailto:contact@yourdomain.com">contact@yourdomain.com</a></dt>
+                                        </dl>
+                                        <div class="referral__grid-user-tooltip-wrapper">
+                                            <div class="referral__grid-user-tooltip-wrap">
+                                                <div class="referral__grid-user-tooltip-title-wrap">
+                                                    <h3 class="referral__grid-user-tooltip-title"><img
+                                                            src="img/user-tooltip-referrals.svg" width="20" height="20"
+                                                            alt="" class="referral__grid-user-tooltip-icon">
+                                                        Referrals</h3>
+                                                    <p class="referral__grid-user-tooltip-desc">6 <span
+                                                            class="info">(Active: 4)</span>
+                                                    </p>
+                                                </div>
+                                            </div>
+                                            <div class="referral__grid-user-tooltip-wrap">
+                                                <div class="referral__grid-user-tooltip-title-wrap">
+                                                    <h3 class="referral__grid-user-tooltip-title"> <img
+                                                            src="img/user-tooltip-payouts.svg" width="20" height="20"
+                                                            alt="" class="referral__grid-user-tooltip-icon">
+                                                        Payouts</h3>
+                                                    <p class="referral__grid-user-tooltip-desc">361 $</p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </article>
+                            </div>
+                            <div class="referral__grid-item"></div>
+                            <div class="referral__grid-item"></div>
+
+                            <div class="referral__grid-item" data-id="2" data-parent="1">
+                                <article class="referral__grid-card" data-user="2">
+                                    <h3 class="referral__grid-status"><span class="dot"></span> Inactive</h3>
+                                    <button type="button" class="referral__grid-card-user" data-toggle="tooltip"
+                                        data-user="2">
+                                        <img src="img/user.webp" width="40" height="40" alt=""
+                                            class="referral__grid-card-user-img">
+                                        <div class="referral__grid-card-user-title-wrap">
+                                            <h4 class="referral__grid-card-user-title">John Doe</h4>
+                                            <a href="mailto:contact@yourdomain.com"
+                                                class="referral__grid-card-user-desc">contact@yourdomain.com</a>
+                                        </div>
+                                        <p class="referral__grid-card-user-sum">5,2k $</p>
+                                    </button>
+                                    <div class="referral__grid-user-tooltip" data-user="2" hidden>
+                                        <dl>
+                                            <dd>Rank</dd>
+                                            <dt><img src="img/gold.svg" width="20" height="20" alt=""
+                                                    class="referral__grid-user-tooltip-icon"> Gold</dt>
+
+                                            <dd>Line (Level)</dd>
+                                            <dt>L2</dt>
+
+                                            <dd>Upline</dd>
+                                            <dt>A. Black (L1)</dt>
+
+                                            <dd>Turnover</dd>
+                                            <dt>$18,750 <span class="desc">(last 30 days)</span></dt>
+
+                                            <dd>Registration Date</dd>
+                                            <dt><time datetime="2008-01-14">14 Jan 2008</time></dt>
+
+                                            <dd>Deposit Amount</dd>
+                                            <dt>$4,200</dt>
+
+                                            <dd>First Deposit</dd>
+                                            <dt><time datetime="2008-02-20">20 Feb 2008</time></dt>
+
+                                            <dd>Last Deposit</dd>
+                                            <dt><time datetime="2025-03-12">12 Mar 2025</time></dt>
+
+                                            <dd>Last Deposit</dd>
+                                            <dt><a href="mailto:contact@yourdomain.com">contact@yourdomain.com</a></dt>
+                                        </dl>
+                                        <div class="referral__grid-user-tooltip-wrapper">
+                                            <div class="referral__grid-user-tooltip-wrap">
+                                                <div class="referral__grid-user-tooltip-title-wrap">
+                                                    <h3 class="referral__grid-user-tooltip-title"><img
+                                                            src="img/user-tooltip-referrals.svg" width="20" height="20"
+                                                            alt="" class="referral__grid-user-tooltip-icon">
+                                                        Referrals</h3>
+                                                    <p class="referral__grid-user-tooltip-desc">6 <span
+                                                            class="info">(Active: 4)</span>
+                                                    </p>
+                                                </div>
+                                            </div>
+                                            <div class="referral__grid-user-tooltip-wrap">
+                                                <div class="referral__grid-user-tooltip-title-wrap">
+                                                    <h3 class="referral__grid-user-tooltip-title"> <img
+                                                            src="img/user-tooltip-payouts.svg" width="20" height="20"
+                                                            alt="" class="referral__grid-user-tooltip-icon">
+                                                        Payouts</h3>
+                                                    <p class="referral__grid-user-tooltip-desc">361 $</p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </article>
+                            </div>
+                            <div class="referral__grid-item" data-id="3" data-parent="1">
+                                <article class="referral__grid-card" data-user="3">
+                                    <h3 class="referral__grid-status"><span class="dot"></span> Inactive</h3>
+                                    <button type="button" class="referral__grid-card-user" data-toggle="tooltip"
+                                        data-user="3">
+                                        <img src="img/user.webp" width="40" height="40" alt=""
+                                            class="referral__grid-card-user-img">
+                                        <div class="referral__grid-card-user-title-wrap">
+                                            <h4 class="referral__grid-card-user-title">John Doe</h4>
+                                            <a href="mailto:contact@yourdomain.com"
+                                                class="referral__grid-card-user-desc">contact@yourdomain.com</a>
+                                        </div>
+                                        <p class="referral__grid-card-user-sum">5,2k $</p>
+                                    </button>
+                                    <div class="referral__grid-user-tooltip" data-user="3" hidden>
+                                        <dl>
+                                            <dd>Rank</dd>
+                                            <dt><img src="img/gold.svg" width="20" height="20" alt=""
+                                                    class="referral__grid-user-tooltip-icon"> Gold</dt>
+
+                                            <dd>Line (Level)</dd>
+                                            <dt>L2</dt>
+
+                                            <dd>Upline</dd>
+                                            <dt>A. Black (L1)</dt>
+
+                                            <dd>Turnover</dd>
+                                            <dt>$18,750 <span class="desc">(last 30 days)</span></dt>
+
+                                            <dd>Registration Date</dd>
+                                            <dt><time datetime="2008-01-14">14 Jan 2008</time></dt>
+
+                                            <dd>Deposit Amount</dd>
+                                            <dt>$4,200</dt>
+
+                                            <dd>First Deposit</dd>
+                                            <dt><time datetime="2008-02-20">20 Feb 2008</time></dt>
+
+                                            <dd>Last Deposit</dd>
+                                            <dt><time datetime="2025-03-12">12 Mar 2025</time></dt>
+
+                                            <dd>Last Deposit</dd>
+                                            <dt><a href="mailto:contact@yourdomain.com">contact@yourdomain.com</a></dt>
+                                        </dl>
+                                        <div class="referral__grid-user-tooltip-wrapper">
+                                            <div class="referral__grid-user-tooltip-wrap">
+                                                <div class="referral__grid-user-tooltip-title-wrap">
+                                                    <h3 class="referral__grid-user-tooltip-title"><img
+                                                            src="img/user-tooltip-referrals.svg" width="20" height="20"
+                                                            alt="" class="referral__grid-user-tooltip-icon">
+                                                        Referrals</h3>
+                                                    <p class="referral__grid-user-tooltip-desc">6 <span
+                                                            class="info">(Active: 4)</span>
+                                                    </p>
+                                                </div>
+                                            </div>
+                                            <div class="referral__grid-user-tooltip-wrap">
+                                                <div class="referral__grid-user-tooltip-title-wrap">
+                                                    <h3 class="referral__grid-user-tooltip-title"> <img
+                                                            src="img/user-tooltip-payouts.svg" width="20" height="20"
+                                                            alt="" class="referral__grid-user-tooltip-icon">
+                                                        Payouts</h3>
+                                                    <p class="referral__grid-user-tooltip-desc">361 $</p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </article>
+                            </div>
+                            <div class="referral__grid-item" data-id="4" data-parent="1">
+                                <article class="referral__grid-card" data-user="4">
+                                    <h3 class="referral__grid-status"><span class="dot"></span> Inactive</h3>
+                                    <button type="button" class="referral__grid-card-user" data-toggle="tooltip"
+                                        data-user="4">
+                                        <img src="img/user.webp" width="40" height="40" alt=""
+                                            class="referral__grid-card-user-img">
+                                        <div class="referral__grid-card-user-title-wrap">
+                                            <h4 class="referral__grid-card-user-title">John Doe</h4>
+                                            <a href="mailto:contact@yourdomain.com"
+                                                class="referral__grid-card-user-desc">contact@yourdomain.com</a>
+                                        </div>
+                                        <p class="referral__grid-card-user-sum">5,2k $</p>
+                                    </button>
+                                    <div class="referral__grid-user-tooltip" data-user="4" hidden>
+                                        <dl>
+                                            <dd>Rank</dd>
+                                            <dt><img src="img/gold.svg" width="20" height="20" alt=""
+                                                    class="referral__grid-user-tooltip-icon"> Gold</dt>
+
+                                            <dd>Line (Level)</dd>
+                                            <dt>L2</dt>
+
+                                            <dd>Upline</dd>
+                                            <dt>A. Black (L1)</dt>
+
+                                            <dd>Turnover</dd>
+                                            <dt>$18,750 <span class="desc">(last 30 days)</span></dt>
+
+                                            <dd>Registration Date</dd>
+                                            <dt><time datetime="2008-01-14">14 Jan 2008</time></dt>
+
+                                            <dd>Deposit Amount</dd>
+                                            <dt>$4,200</dt>
+
+                                            <dd>First Deposit</dd>
+                                            <dt><time datetime="2008-02-20">20 Feb 2008</time></dt>
+
+                                            <dd>Last Deposit</dd>
+                                            <dt><time datetime="2025-03-12">12 Mar 2025</time></dt>
+
+                                            <dd>Last Deposit</dd>
+                                            <dt><a href="mailto:contact@yourdomain.com">contact@yourdomain.com</a></dt>
+                                        </dl>
+                                        <div class="referral__grid-user-tooltip-wrapper">
+                                            <div class="referral__grid-user-tooltip-wrap">
+                                                <div class="referral__grid-user-tooltip-title-wrap">
+                                                    <h3 class="referral__grid-user-tooltip-title"><img
+                                                            src="img/user-tooltip-referrals.svg" width="20" height="20"
+                                                            alt="" class="referral__grid-user-tooltip-icon">
+                                                        Referrals</h3>
+                                                    <p class="referral__grid-user-tooltip-desc">6 <span
+                                                            class="info">(Active: 4)</span>
+                                                    </p>
+                                                </div>
+                                            </div>
+                                            <div class="referral__grid-user-tooltip-wrap">
+                                                <div class="referral__grid-user-tooltip-title-wrap">
+                                                    <h3 class="referral__grid-user-tooltip-title"> <img
+                                                            src="img/user-tooltip-payouts.svg" width="20" height="20"
+                                                            alt="" class="referral__grid-user-tooltip-icon">
+                                                        Payouts</h3>
+                                                    <p class="referral__grid-user-tooltip-desc">361 $</p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </article>
+                            </div>
+                            <div class="referral__grid-item" data-id="5" data-parent="1">
+                                <article class="referral__grid-card" data-user="5">
+                                    <h3 class="referral__grid-status"><span class="dot"></span> Inactive</h3>
+                                    <button type="button" class="referral__grid-card-user" data-toggle="tooltip"
+                                        data-user="5">
+                                        <img src="img/user.webp" width="40" height="40" alt=""
+                                            class="referral__grid-card-user-img">
+                                        <div class="referral__grid-card-user-title-wrap">
+                                            <h4 class="referral__grid-card-user-title">John Doe</h4>
+                                            <a href="mailto:contact@yourdomain.com"
+                                                class="referral__grid-card-user-desc">contact@yourdomain.com</a>
+                                        </div>
+                                        <p class="referral__grid-card-user-sum">5,2k $</p>
+                                    </button>
+                                    <div class="referral__grid-user-tooltip" data-user="5" hidden>
+                                        <dl>
+                                            <dd>Rank</dd>
+                                            <dt><img src="img/gold.svg" width="20" height="20" alt=""
+                                                    class="referral__grid-user-tooltip-icon"> Gold</dt>
+
+                                            <dd>Line (Level)</dd>
+                                            <dt>L2</dt>
+
+                                            <dd>Upline</dd>
+                                            <dt>A. Black (L1)</dt>
+
+                                            <dd>Turnover</dd>
+                                            <dt>$18,750 <span class="desc">(last 30 days)</span></dt>
+
+                                            <dd>Registration Date</dd>
+                                            <dt><time datetime="2008-01-14">14 Jan 2008</time></dt>
+
+                                            <dd>Deposit Amount</dd>
+                                            <dt>$4,200</dt>
+
+                                            <dd>First Deposit</dd>
+                                            <dt><time datetime="2008-02-20">20 Feb 2008</time></dt>
+
+                                            <dd>Last Deposit</dd>
+                                            <dt><time datetime="2025-03-12">12 Mar 2025</time></dt>
+
+                                            <dd>Last Deposit</dd>
+                                            <dt><a href="mailto:contact@yourdomain.com">contact@yourdomain.com</a></dt>
+                                        </dl>
+                                        <div class="referral__grid-user-tooltip-wrapper">
+                                            <div class="referral__grid-user-tooltip-wrap">
+                                                <div class="referral__grid-user-tooltip-title-wrap">
+                                                    <h3 class="referral__grid-user-tooltip-title"><img
+                                                            src="img/user-tooltip-referrals.svg" width="20" height="20"
+                                                            alt="" class="referral__grid-user-tooltip-icon">
+                                                        Referrals</h3>
+                                                    <p class="referral__grid-user-tooltip-desc">6 <span
+                                                            class="info">(Active: 4)</span>
+                                                    </p>
+                                                </div>
+                                            </div>
+                                            <div class="referral__grid-user-tooltip-wrap">
+                                                <div class="referral__grid-user-tooltip-title-wrap">
+                                                    <h3 class="referral__grid-user-tooltip-title"> <img
+                                                            src="img/user-tooltip-payouts.svg" width="20" height="20"
+                                                            alt="" class="referral__grid-user-tooltip-icon">
+                                                        Payouts</h3>
+                                                    <p class="referral__grid-user-tooltip-desc">361 $</p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </article>
+                            </div>
+                            <div class="referral__grid-item" data-id="6" data-parent="1">
+                                <article class="referral__grid-card" data-user="6">
+                                    <h3 class="referral__grid-status"><span class="dot"></span> Inactive</h3>
+                                    <button type="button" class="referral__grid-card-user" data-toggle="tooltip"
+                                        data-user="6">
+                                        <img src="img/user.webp" width="40" height="40" alt=""
+                                            class="referral__grid-card-user-img">
+                                        <div class="referral__grid-card-user-title-wrap">
+                                            <h4 class="referral__grid-card-user-title">John Doe</h4>
+                                            <a href="mailto:contact@yourdomain.com"
+                                                class="referral__grid-card-user-desc">contact@yourdomain.com</a>
+                                        </div>
+                                        <p class="referral__grid-card-user-sum">5,2k $</p>
+                                    </button>
+                                    <div class="referral__grid-user-tooltip" data-user="6" hidden>
+                                        <dl>
+                                            <dd>Rank</dd>
+                                            <dt><img src="img/gold.svg" width="20" height="20" alt=""
+                                                    class="referral__grid-user-tooltip-icon"> Gold</dt>
+
+                                            <dd>Line (Level)</dd>
+                                            <dt>L2</dt>
+
+                                            <dd>Upline</dd>
+                                            <dt>A. Black (L1)</dt>
+
+                                            <dd>Turnover</dd>
+                                            <dt>$18,750 <span class="desc">(last 30 days)</span></dt>
+
+                                            <dd>Registration Date</dd>
+                                            <dt><time datetime="2008-01-14">14 Jan 2008</time></dt>
+
+                                            <dd>Deposit Amount</dd>
+                                            <dt>$4,200</dt>
+
+                                            <dd>First Deposit</dd>
+                                            <dt><time datetime="2008-02-20">20 Feb 2008</time></dt>
+
+                                            <dd>Last Deposit</dd>
+                                            <dt><time datetime="2025-03-12">12 Mar 2025</time></dt>
+
+                                            <dd>Last Deposit</dd>
+                                            <dt><a href="mailto:contact@yourdomain.com">contact@yourdomain.com</a></dt>
+                                        </dl>
+                                        <div class="referral__grid-user-tooltip-wrapper">
+                                            <div class="referral__grid-user-tooltip-wrap">
+                                                <div class="referral__grid-user-tooltip-title-wrap">
+                                                    <h3 class="referral__grid-user-tooltip-title"><img
+                                                            src="img/user-tooltip-referrals.svg" width="20" height="20"
+                                                            alt="" class="referral__grid-user-tooltip-icon">
+                                                        Referrals</h3>
+                                                    <p class="referral__grid-user-tooltip-desc">6 <span
+                                                            class="info">(Active: 4)</span>
+                                                    </p>
+                                                </div>
+                                            </div>
+                                            <div class="referral__grid-user-tooltip-wrap">
+                                                <div class="referral__grid-user-tooltip-title-wrap">
+                                                    <h3 class="referral__grid-user-tooltip-title"> <img
+                                                            src="img/user-tooltip-payouts.svg" width="20" height="20"
+                                                            alt="" class="referral__grid-user-tooltip-icon">
+                                                        Payouts</h3>
+                                                    <p class="referral__grid-user-tooltip-desc">361 $</p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </article>
+                            </div>
+
+                            <div class="referral__grid-item"></div>
+                            <div class="referral__grid-item" data-id="7" data-parent="3">
+                                <article class="referral__grid-card" data-user="7">
+                                    <h3 class="referral__grid-status"><span class="dot"></span> Inactive</h3>
+                                    <button type="button" class="referral__grid-card-user" data-toggle="tooltip"
+                                        data-user="7">
+                                        <img src="img/user.webp" width="40" height="40" alt=""
+                                            class="referral__grid-card-user-img">
+                                        <div class="referral__grid-card-user-title-wrap">
+                                            <h4 class="referral__grid-card-user-title">John Doe</h4>
+                                            <a href="mailto:contact@yourdomain.com"
+                                                class="referral__grid-card-user-desc">contact@yourdomain.com</a>
+                                        </div>
+                                        <p class="referral__grid-card-user-sum">5,2k $</p>
+                                    </button>
+                                    <div class="referral__grid-user-tooltip" data-user="7" hidden>
+                                        <dl>
+                                            <dd>Rank</dd>
+                                            <dt><img src="img/gold.svg" width="20" height="20" alt=""
+                                                    class="referral__grid-user-tooltip-icon"> Gold</dt>
+
+                                            <dd>Line (Level)</dd>
+                                            <dt>L2</dt>
+
+                                            <dd>Upline</dd>
+                                            <dt>A. Black (L1)</dt>
+
+                                            <dd>Turnover</dd>
+                                            <dt>$18,750 <span class="desc">(last 30 days)</span></dt>
+
+                                            <dd>Registration Date</dd>
+                                            <dt><time datetime="2008-01-14">14 Jan 2008</time></dt>
+
+                                            <dd>Deposit Amount</dd>
+                                            <dt>$4,200</dt>
+
+                                            <dd>First Deposit</dd>
+                                            <dt><time datetime="2008-02-20">20 Feb 2008</time></dt>
+
+                                            <dd>Last Deposit</dd>
+                                            <dt><time datetime="2025-03-12">12 Mar 2025</time></dt>
+
+                                            <dd>Last Deposit</dd>
+                                            <dt><a href="mailto:contact@yourdomain.com">contact@yourdomain.com</a></dt>
+                                        </dl>
+                                        <div class="referral__grid-user-tooltip-wrapper">
+                                            <div class="referral__grid-user-tooltip-wrap">
+                                                <div class="referral__grid-user-tooltip-title-wrap">
+                                                    <h3 class="referral__grid-user-tooltip-title"><img
+                                                            src="img/user-tooltip-referrals.svg" width="20" height="20"
+                                                            alt="" class="referral__grid-user-tooltip-icon">
+                                                        Referrals</h3>
+                                                    <p class="referral__grid-user-tooltip-desc">6 <span
+                                                            class="info">(Active: 4)</span>
+                                                    </p>
+                                                </div>
+                                            </div>
+                                            <div class="referral__grid-user-tooltip-wrap">
+                                                <div class="referral__grid-user-tooltip-title-wrap">
+                                                    <h3 class="referral__grid-user-tooltip-title"> <img
+                                                            src="img/user-tooltip-payouts.svg" width="20" height="20"
+                                                            alt="" class="referral__grid-user-tooltip-icon">
+                                                        Payouts</h3>
+                                                    <p class="referral__grid-user-tooltip-desc">361 $</p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </article>
+                            </div>
+                            <div class="referral__grid-item"></div>
+                            <div class="referral__grid-item"></div>
+                            <div class="referral__grid-item" data-id="8" data-parent="5">
+                                <article class="referral__grid-card" data-user="8">
+                                    <h3 class="referral__grid-status"><span class="dot"></span> Inactive</h3>
+                                    <button type="button" class="referral__grid-card-user" data-toggle="tooltip"
+                                        data-user="8">
+                                        <img src="img/user.webp" width="40" height="40" alt=""
+                                            class="referral__grid-card-user-img">
+                                        <div class="referral__grid-card-user-title-wrap">
+                                            <h4 class="referral__grid-card-user-title">John Doe</h4>
+                                            <a href="mailto:contact@yourdomain.com"
+                                                class="referral__grid-card-user-desc">contact@yourdomain.com</a>
+                                        </div>
+                                        <p class="referral__grid-card-user-sum">5,2k $</p>
+                                    </button>
+                                    <div class="referral__grid-user-tooltip" data-user="8" hidden>
+                                        <dl>
+                                            <dd>Rank</dd>
+                                            <dt><img src="img/gold.svg" width="20" height="20" alt=""
+                                                    class="referral__grid-user-tooltip-icon"> Gold</dt>
+
+                                            <dd>Line (Level)</dd>
+                                            <dt>L2</dt>
+
+                                            <dd>Upline</dd>
+                                            <dt>A. Black (L1)</dt>
+
+                                            <dd>Turnover</dd>
+                                            <dt>$18,750 <span class="desc">(last 30 days)</span></dt>
+
+                                            <dd>Registration Date</dd>
+                                            <dt><time datetime="2008-01-14">14 Jan 2008</time></dt>
+
+                                            <dd>Deposit Amount</dd>
+                                            <dt>$4,200</dt>
+
+                                            <dd>First Deposit</dd>
+                                            <dt><time datetime="2008-02-20">20 Feb 2008</time></dt>
+
+                                            <dd>Last Deposit</dd>
+                                            <dt><time datetime="2025-03-12">12 Mar 2025</time></dt>
+
+                                            <dd>Last Deposit</dd>
+                                            <dt><a href="mailto:contact@yourdomain.com">contact@yourdomain.com</a></dt>
+                                        </dl>
+                                        <div class="referral__grid-user-tooltip-wrapper">
+                                            <div class="referral__grid-user-tooltip-wrap">
+                                                <div class="referral__grid-user-tooltip-title-wrap">
+                                                    <h3 class="referral__grid-user-tooltip-title"><img
+                                                            src="img/user-tooltip-referrals.svg" width="20" height="20"
+                                                            alt="" class="referral__grid-user-tooltip-icon">
+                                                        Referrals</h3>
+                                                    <p class="referral__grid-user-tooltip-desc">6 <span
+                                                            class="info">(Active: 4)</span>
+                                                    </p>
+                                                </div>
+                                            </div>
+                                            <div class="referral__grid-user-tooltip-wrap">
+                                                <div class="referral__grid-user-tooltip-title-wrap">
+                                                    <h3 class="referral__grid-user-tooltip-title"> <img
+                                                            src="img/user-tooltip-payouts.svg" width="20" height="20"
+                                                            alt="" class="referral__grid-user-tooltip-icon">
+                                                        Payouts</h3>
+                                                    <p class="referral__grid-user-tooltip-desc">361 $</p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </article>
+                            </div>
+
+                            <div class="referral__grid-item"></div>
+                            <div class="referral__grid-item" data-id="9" data-parent="7">
+                                <article class="referral__grid-card" data-user="9">
+                                    <h3 class="referral__grid-status"><span class="dot"></span> Inactive</h3>
+                                    <button type="button" class="referral__grid-card-user" data-toggle="tooltip"
+                                        data-user="9">
+                                        <img src="img/user.webp" width="40" height="40" alt=""
+                                            class="referral__grid-card-user-img">
+                                        <div class="referral__grid-card-user-title-wrap">
+                                            <h4 class="referral__grid-card-user-title">John Doe</h4>
+                                            <a href="mailto:contact@yourdomain.com"
+                                                class="referral__grid-card-user-desc">contact@yourdomain.com</a>
+                                        </div>
+                                        <p class="referral__grid-card-user-sum">5,2k $</p>
+                                    </button>
+                                    <div class="referral__grid-user-tooltip" data-user="9" hidden>
+                                        <dl>
+                                            <dd>Rank</dd>
+                                            <dt><img src="img/gold.svg" width="20" height="20" alt=""
+                                                    class="referral__grid-user-tooltip-icon"> Gold</dt>
+
+                                            <dd>Line (Level)</dd>
+                                            <dt>L2</dt>
+
+                                            <dd>Upline</dd>
+                                            <dt>A. Black (L1)</dt>
+
+                                            <dd>Turnover</dd>
+                                            <dt>$18,750 <span class="desc">(last 30 days)</span></dt>
+
+                                            <dd>Registration Date</dd>
+                                            <dt><time datetime="2008-01-14">14 Jan 2008</time></dt>
+
+                                            <dd>Deposit Amount</dd>
+                                            <dt>$4,200</dt>
+
+                                            <dd>First Deposit</dd>
+                                            <dt><time datetime="2008-02-20">20 Feb 2008</time></dt>
+
+                                            <dd>Last Deposit</dd>
+                                            <dt><time datetime="2025-03-12">12 Mar 2025</time></dt>
+
+                                            <dd>Last Deposit</dd>
+                                            <dt><a href="mailto:contact@yourdomain.com">contact@yourdomain.com</a></dt>
+                                        </dl>
+                                        <div class="referral__grid-user-tooltip-wrapper">
+                                            <div class="referral__grid-user-tooltip-wrap">
+                                                <div class="referral__grid-user-tooltip-title-wrap">
+                                                    <h3 class="referral__grid-user-tooltip-title"><img
+                                                            src="img/user-tooltip-referrals.svg" width="20" height="20"
+                                                            alt="" class="referral__grid-user-tooltip-icon">
+                                                        Referrals</h3>
+                                                    <p class="referral__grid-user-tooltip-desc">6 <span
+                                                            class="info">(Active: 4)</span>
+                                                    </p>
+                                                </div>
+                                            </div>
+                                            <div class="referral__grid-user-tooltip-wrap">
+                                                <div class="referral__grid-user-tooltip-title-wrap">
+                                                    <h3 class="referral__grid-user-tooltip-title"> <img
+                                                            src="img/user-tooltip-payouts.svg" width="20" height="20"
+                                                            alt="" class="referral__grid-user-tooltip-icon">
+                                                        Payouts</h3>
+                                                    <p class="referral__grid-user-tooltip-desc">361 $</p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </article>
+                            </div>
+                            <div class="referral__grid-item"></div>
+                            <div class="referral__grid-item"></div>
+                        </div>
+                    </div>
+                </div>
+            </article>
+        </div>
+    </section>
+
+    <script>
+        (() => {
+            const cards = document.querySelectorAll('.referral__grid-card.active');
+            if (!cards.length) return;
+
+            for (const card of cards) {
+                const status = card.querySelector('.referral__grid-status');
+                if (!status) continue;
+
+                const textNode = [...status.childNodes].find(n => n.nodeType === Node.TEXT_NODE);
+                if (textNode) {
+                    textNode.textContent = ' Active';
+                }
+            }
+        })();
+    </script>
+
+    <script>
+        (function () {
+
+            function waitForReferral(callback) {
+                const timer = setInterval(() => {
+                    const tooltips = document.querySelectorAll(".referral__grid-user-tooltip");
+                    const cards = document.querySelectorAll(".referral__grid-card");
+                    const canvas = document.querySelector(".referral__grid-canvas");
+
+                    if (tooltips.length && cards.length && canvas) {
+                        clearInterval(timer);
+                        callback(canvas);
+                    }
+                }, 40);
+            }
+
+            waitForReferral(initTooltip);
+
+            function initTooltip(canvas) {
+
+                let activeTooltip = null;
+                let originalParent = null;
+
+                document.addEventListener("click", function (e) {
+
+                    const btn = e.target.closest(".referral__grid-card-user");
+                    const opened = document.querySelector(".referral__grid-user-tooltip.__open");
+
+                    if (!btn) {
+                        if (opened) closeTooltip(opened);
+                        return;
+                    }
+
+                    const card = btn.closest(".referral__grid-card");
+                    const tooltip = card.querySelector(".referral__grid-user-tooltip");
+
+                    if (!tooltip) return;
+
+                    if (tooltip === activeTooltip) {
+                        closeTooltip(tooltip);
+                        return;
+                    }
+
+                    if (opened) closeTooltip(opened);
+
+                    openTooltip(tooltip, card, canvas);
+                });
+
+                function openTooltip(tooltip, card, canvas) {
+
+                    tooltip.hidden = false;
+
+                    originalParent = tooltip.parentElement;
+
+                    canvas.appendChild(tooltip);
+
+                    tooltip.classList.add("__open");
+
+                    tooltip.style.position = "absolute";
+                    tooltip.style.zIndex = "999999";
+
+                    const cardRect = card.getBoundingClientRect();
+                    const canvasRect = canvas.getBoundingClientRect();
+
+                    tooltip.style.left = (cardRect.left - canvasRect.left) + "px";
+                    tooltip.style.top = (cardRect.bottom - canvasRect.top + 8) + "px";
+
+                    activeTooltip = tooltip;
+                }
+
+                function closeTooltip(tooltip) {
+                    tooltip.classList.remove("__open");
+                    tooltip.hidden = true;
+
+                    if (originalParent) originalParent.appendChild(tooltip);
+
+                    tooltip.style.position = "";
+                    tooltip.style.left = "";
+                    tooltip.style.top = "";
+                    tooltip.style.zIndex = "";
+
+                    activeTooltip = null;
+                }
+            }
+
+        })();
+    </script>
+
+    <script>
+        (function () {
+            const grid = document.querySelector('.referral__grid');
+            if (!grid) return;
+
+            const itemEls = [...grid.querySelectorAll('.referral__grid-item[data-id]')];
+
+            if (!itemEls.length) return;
+
+            const nodesById = new Map();
+
+            itemEls.forEach(el => {
+                const id = el.dataset.id;
+                const parentId = el.dataset.parent || null;
+                nodesById.set(id, {
+                    id,
+                    parentId,
+                    el,
+                    children: [],
+                    col: null,
+                    level: null,
+                });
+            });
+
+            nodesById.forEach(node => {
+                if (!node.parentId) return;
+                const parent = nodesById.get(node.parentId);
+                if (parent) {
+                    parent.children.push(node);
+                }
+            });
+
+            const roots = [...nodesById.values()].filter(
+                n => !n.parentId || !nodesById.has(n.parentId)
+            );
+            if (!roots.length) return;
+
+            const root = roots[0];
+
+            const levels = [];
+            levels.push([root]);
+
+            let idx = 0;
+            while (idx < levels.length) {
+                const current = levels[idx];
+                const next = [];
+                current.forEach(node => {
+                    node.level = idx;
+                    node.children.forEach(ch => {
+                        next.push(ch);
+                    });
+                });
+                if (next.length) {
+                    levels.push(next);
+                }
+                idx++;
+            }
+
+            let maxChildren = 0;
+            nodesById.forEach(node => {
+                if (node.children.length > maxChildren) {
+                    maxChildren = node.children.length;
+                }
+            });
+            const maxCols = Math.max(3, maxChildren || 1);
+
+            root.col = Math.floor(maxCols / 2);
+
+            for (let levelIndex = 1; levelIndex < levels.length; levelIndex++) {
+                const levelNodes = levels[levelIndex];
+
+                const processedParents = new Set();
+
+                levelNodes.forEach(node => {
+                    const parent = nodesById.get(node.parentId);
+                    if (!parent) return;
+
+                    if (processedParents.has(parent.id)) return;
+                    processedParents.add(parent.id);
+
+                    const children = parent.children;
+                    if (!children.length) return;
+
+                    const baseCol = parent.col ?? Math.floor(maxCols / 2);
+
+                    const k = children.length;
+                    let startCol = baseCol - Math.floor((k - 1) / 2);
+
+                    if (startCol < 0) startCol = 0;
+                    if (startCol + k - 1 > maxCols - 1) {
+                        startCol = maxCols - k;
+                    }
+
+                    children.forEach((child, i) => {
+                        child.col = startCol + i;
+                        child.level = parent.level + 1;
+                    });
+                });
+            }
+
+            levels.forEach(level => {
+                level.forEach(node => {
+                    if (node.col == null) {
+                        node.col = Math.floor(maxCols / 2);
+                    }
+                });
+            });
+
+            const newGrid = document.createElement('div');
+            newGrid.className = 'referral__grid';
+
+            levels.forEach(level => {
+                const rowCells = Array.from({ length: maxCols }, () => {
+                    const cell = document.createElement('div');
+                    cell.className = 'referral__grid-item';
+                    return cell;
+                });
+
+                level.forEach(node => {
+                    const targetCell = rowCells[node.col];
+
+                    while (node.el.firstChild) {
+                        targetCell.appendChild(node.el.firstChild);
+                    }
+
+                    targetCell.dataset.id = node.id;
+                    if (node.parentId) {
+                        targetCell.dataset.parent = node.parentId;
+                    } else {
+                        delete targetCell.dataset.parent;
+                    }
+                });
+
+                rowCells.forEach(cell => newGrid.appendChild(cell));
+            });
+
+            grid.replaceWith(newGrid);
+
+            newGrid.style.gridTemplateColumns = `repeat(${maxCols}, 1fr)`;
+
+            document.dispatchEvent(new Event("referralGridReady"));
+        })();
+    </script>
+
+    <script>
+        (function drawReferralLines() {
+            const linesCanvas = document.querySelector('.referral__grid-lines');
+            const ctx = linesCanvas.getContext('2d');
+            const gridCanvas = document.querySelector('.referral__grid-canvas');
+            const grid = document.querySelector('.referral__grid');
+
+            function getPan() {
+                if (!window.__PAN_X) return { x: 0, y: 0 };
+                return { x: window.__PAN_X(), y: window.__PAN_Y() };
+            }
+
+            function resizeCanvas() {
+                linesCanvas.width = gridCanvas.clientWidth;
+                linesCanvas.height = gridCanvas.clientHeight;
+            }
+
+            function getLocalRect(elem) {
+                const pan = getPan();
+                const r = elem.getBoundingClientRect();
+                const g = grid.getBoundingClientRect();
+                return {
+                    left: r.left - g.left - pan.x,
+                    top: r.top - g.top - pan.y,
+                    width: r.width,
+                    height: r.height
+                };
+            }
+
+            function draw() {
+                resizeCanvas();
+                ctx.clearRect(0, 0, linesCanvas.width, linesCanvas.height);
+
+                ctx.strokeStyle = "rgba(255,255,255,0.20)";
+                ctx.lineWidth = 2;
+                ctx.lineCap = "round";
+
+                const items = [...grid.querySelectorAll('.referral__grid-item[data-id]')];
+                const map = new Map();
+                items.forEach(i => map.set(i.dataset.id, i));
+
+                const parentChildren = new Map();
+                items.forEach(child => {
+                    const p = child.dataset.parent;
+                    if (!p) return;
+                    if (!parentChildren.has(p)) parentChildren.set(p, []);
+                    parentChildren.get(p).push(child);
+                });
+
+                parentChildren.forEach((children, parentId) => {
+                    const parentItem = map.get(parentId);
+                    if (!parentItem) return;
+
+                    const parentCard = parentItem.querySelector('.referral__grid-card');
+                    if (!parentCard) return;
+
+                    const pRect = getLocalRect(parentCard);
+                    const parentX = pRect.left + pRect.width / 2;
+                    const parentBottom = pRect.top + pRect.height;
+                    const vOffset = 25;
+
+                    if (children.length === 1) {
+                        const cRect = getLocalRect(children[0].querySelector('.referral__grid-card'));
+                        const childX = cRect.left + cRect.width / 2;
+                        const childTop = cRect.top;
+
+                        ctx.beginPath();
+                        ctx.moveTo(parentX, parentBottom);
+                        ctx.lineTo(parentX, parentBottom + vOffset);
+                        ctx.lineTo(childX, parentBottom + vOffset);
+                        ctx.lineTo(childX, childTop);
+                        ctx.stroke();
+                        return;
+                    }
+
+                    const coords = children.map(ch => {
+                        const r = getLocalRect(ch.querySelector('.referral__grid-card'));
+                        return {
+                            x: r.left + r.width / 2,
+                            top: r.top
+                        };
+                    });
+
+                    const minX = Math.min(...coords.map(c => c.x));
+                    const maxX = Math.max(...coords.map(c => c.x));
+                    const midY = parentBottom + vOffset;
+
+                    ctx.beginPath();
+                    ctx.moveTo(parentX, parentBottom);
+                    ctx.lineTo(parentX, midY);
+                    ctx.stroke();
+
+                    ctx.beginPath();
+                    ctx.moveTo(minX, midY);
+                    ctx.lineTo(maxX, midY);
+                    ctx.stroke();
+
+                    coords.forEach(c => {
+                        ctx.beginPath();
+                        ctx.moveTo(c.x, midY);
+                        ctx.lineTo(c.x, c.top);
+                        ctx.stroke();
+                    });
+                });
+            }
+
+            draw();
+
+            window.addEventListener("resize", draw);
+
+            const wrap = document.querySelector(".referral__grid-wrap");
+            if (wrap) {
+                wrap.addEventListener("wheel", draw, { passive: false });
+            }
+
+            document.addEventListener("mousemove", draw);
+            document.addEventListener("touchmove", draw, { passive: false });
+        })();
+    </script>
+
+    <script>
+        function initReferralPanorama(wrapSelector, canvasSelector, gridSelector) {
+            const wrap = document.querySelector(wrapSelector);
+            const canvas = document.querySelector(canvasSelector);
+            const grid = document.querySelector(gridSelector);
+
+            if (!wrap || !canvas || !grid) return;
+
+            let isDown = false;
+            let isTouch = false;
+            let touchAxis = null;
+
+            let offsetX = 0;
+            let offsetY = 0;
+
+            let dragStartMouseX = 0;
+            let dragStartMouseY = 0;
+
+            let dragStartOffsetX = 0;
+            let dragStartOffsetY = 0;
+
+            const clamp = (v, min, max) => Math.min(Math.max(v, min), max);
+
+            function getBounds() {
+                const wrapW = wrap.clientWidth;
+                const wrapH = wrap.clientHeight;
+
+                const contentW = grid.scrollWidth;
+                let contentH = grid.scrollHeight;
+
+                const openedTooltip = document.querySelector(".referral__grid-user-tooltip.__open");
+
+                if (openedTooltip) {
+                    const tooltipRect = openedTooltip.getBoundingClientRect();
+                    const canvasRect = canvas.getBoundingClientRect();
+
+                    const tooltipBottom = tooltipRect.bottom - canvasRect.top;
+
+                    if (tooltipBottom > contentH) {
+                        contentH = tooltipBottom + 40;
+                    }
+                }
+
+                let minX, maxX, minY, maxY;
+
+                if (contentW <= wrapW) {
+                    const centerX = (wrapW - contentW) / 2;
+                    minX = maxX = centerX;
+                } else {
+                    minX = wrapW - contentW;
+                    maxX = 0;
+                }
+
+                if (contentH <= wrapH) {
+                    const centerY = (wrapH - contentH) / 2;
+                    minY = maxY = centerY;
+                } else {
+                    minY = wrapH - contentH;
+                    maxY = 0;
+                }
+
+                return { minX, maxX, minY, maxY };
+            }
+
+
+            function applyTransform() {
+                const { minX, maxX, minY, maxY } = getBounds();
+
+                offsetX = clamp(offsetX, minX, maxX);
+                offsetY = clamp(offsetY, minY, maxY);
+
+                canvas.style.transform = `translate(${offsetX}px, ${offsetY}px)`;
+            }
+
+            function center() {
+                const wrapW = wrap.clientWidth;
+                const contentW = grid.scrollWidth;
+
+                offsetX = (wrapW - contentW) / 2;
+                offsetY = 0;
+
+                applyTransform();
+            }
+
+            wrap.addEventListener("mousedown", e => {
+                isDown = true;
+                isTouch = false;
+
+                dragStartMouseX = e.pageX;
+                dragStartMouseY = e.pageY;
+
+                dragStartOffsetX = offsetX;
+                dragStartOffsetY = offsetY;
+
+                touchAxis = null;
+            });
+
+            document.addEventListener("mousemove", e => {
+                if (!isDown || isTouch) return;
+
+                const dx = e.pageX - dragStartMouseX;
+                const dy = e.pageY - dragStartMouseY;
+
+                if (!touchAxis) {
+                    touchAxis = Math.abs(dx) > Math.abs(dy) ? "x" : "y";
+                }
+
+                const { minX, maxX, minY, maxY } = getBounds();
+
+                if (touchAxis === "x") {
+                    offsetX = clamp(dragStartOffsetX + dx, minX, maxX);
+                } else {
+                    offsetY = clamp(dragStartOffsetY + dy, minY, maxY);
+                }
+
+                canvas.style.transform = `translate(${offsetX}px, ${offsetY}px)`;
+            });
+
+            document.addEventListener("mouseup", () => {
+                isDown = false;
+                touchAxis = null;
+            });
+
+            wrap.addEventListener("touchstart", e => {
+                isDown = true;
+                isTouch = true;
+
+                dragStartMouseX = e.touches[0].pageX;
+                dragStartMouseY = e.touches[0].pageY;
+
+                dragStartOffsetX = offsetX;
+                dragStartOffsetY = offsetY;
+
+                touchAxis = null;
+            });
+
+            wrap.addEventListener("touchmove", e => {
+                if (!isDown || !isTouch) return;
+                e.preventDefault();
+
+                const t = e.touches[0];
+                const dx = t.pageX - dragStartMouseX;
+                const dy = t.pageY - dragStartMouseY;
+
+                if (!touchAxis) {
+                    touchAxis = Math.abs(dx) > Math.abs(dy) ? "x" : "y";
+                }
+
+                const { minX, maxX, minY, maxY } = getBounds();
+
+                if (touchAxis === "x") {
+                    offsetX = clamp(dragStartOffsetX + dx, minX, maxX);
+                } else {
+                    offsetY = clamp(dragStartOffsetY + dy, minY, maxY);
+                }
+
+                canvas.style.transform = `translate(${offsetX}px, ${offsetY}px)`;
+            }, { passive: false });
+
+            wrap.addEventListener("touchend", () => {
+                isDown = false;
+                isTouch = false;
+                touchAxis = null;
+            });
+
+            center();
+            window.addEventListener("resize", center);
+        }
+    </script>
+
+    <script>
+        (function initReferralImmediate() {
+            const interval = setInterval(() => {
+                const grid = document.querySelector('.referral__grid');
+                const wrap = document.querySelector('.referral__grid-wrap');
+                const canvas = document.querySelector('.referral__grid-canvas');
+
+                if (grid && wrap && canvas) {
+                    clearInterval(interval);
+                    try {
+                        if (typeof initReferralPanorama === "function") {
+                            initReferralPanorama(".referral__grid-wrap", ".referral__grid-canvas", ".referral__grid");
+                        }
+                        if (typeof drawReferralLines === "function") {
+                            drawReferralLines();
+                        }
+                    } catch (err) {
+                        console.error("Referral init error:", err);
+                    }
+                }
+            }, 50);
+        })();
+    </script>
+</body>
+
+</html>
