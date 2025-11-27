@@ -207,6 +207,7 @@ button {
   height: 40px;
   -o-object-fit: contain;
      object-fit: contain;
+  border-radius: var(--border-radius-xs);
 }
 .referral__grid-card-user-title {
   font-size: var(--desc-size-md);

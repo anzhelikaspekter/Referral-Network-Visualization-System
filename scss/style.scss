@@ -204,6 +204,7 @@ button {
                     width: 40px;
                     height: 40px;
                     object-fit: contain;
+                    border-radius: var(--border-radius-xs);
                 }
                 &-title {
                     font-size: var(--desc-size-md);
