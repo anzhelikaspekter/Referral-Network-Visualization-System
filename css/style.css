@@ -1,7 +1,7 @@
 @charset "UTF-8";
 :root {
-  --bg-color: rgba(11, 15, 25, 1);
-  --font-primary: "Euclid Circular B";
+  --bg-color: #0b0f19;
+  --font-primary: "Roboto", sans-serif;
   /* Paddings */
   --padding-xs: clamp(8px, 2vw + 1rem, 12px);
   --padding-sm: clamp(12px, 2vw + 1rem, 16px);
@@ -17,29 +17,34 @@
   --desc-size-lg: clamp(14px, 2vw + 1rem, 16px);
   --title-md: clamp(20px, 2vw + 1rem, 24px);
   /* Referral UI — Card & Wrap */
-  --referral-card-bg-color: rgba(225, 232, 247, 0.05);
-  --referral-card-border-color: rgba(225, 232, 247, 0.04);
-  --referral-card-title-color: rgba(255, 255, 255, 1);
-  --referral-card-desc-color: rgba(255, 255, 255, 0.4);
-  --referral-card-count-color: rgba(20, 199, 132, 1);
-  --referral-btn-bg-color: rgba(225, 232, 247, 0.06);
-  --referral-btn-border-color: rgba(225, 232, 247, 0.04);
-  --referral-card-wrap-light-bg-color: rgba(28, 28, 29, 1);
-  --referral-card-wrap-dark-bg-color: rgba(225, 232, 247, 0.05);
-  --referral-card-wrap-light-color: rgba(255, 255, 255, 1);
-  --referral-card-wrap-dark-color: rgba(255, 255, 255, 0.6);
-  --referral-card-wrap-fill-bg-color: rgba(20, 20, 20, 1);
-  --referral-card-wrap-fill-border-color: rgba(225, 232, 247, 0.04);
+  --referral-card-bg-color: #151a25;
+  --referral-card-border-color: #1d222e;
+  --referral-card-title-color: #ffffff;
+  --referral-card-desc-color: #a6a6a6;
+  --referral-card-user-title-color: #ffffff;
+  --referral-card-user-desc-color: #e6e6e6;
+  --referral-card-user-title-active-color: #ffffff;
+  --referral-card-user-desc-active-color: #e2e2e2;
+  --referral-card-user-sum-color: #fff;
   /* Grid System */
-  --referral-grid-card-bg-color: rgba(255, 255, 255, 0.1);
-  --referral-grid-card-border-color: rgba(255, 255, 255, 0.1);
-  --referral-grid-card-active-bg-color: rgba(2, 207, 132, 0.1);
-  --referral-grid-card-active-border-color: rgba(2, 207, 132, 0.1);
-  --referral-grid-card-status-color: rgba(142, 142, 142, 1);
-  --referral-grid-card-status-active-color: rgba(3, 193, 122, 1);
+  --referral-grid-card-bg-color: #2d313b;
+  --referral-grid-card-border-color: #373b44;
+  --referral-grid-card-btn-bg-color: #555961;
+  --referral-grid-card-btn-border-bg-color: #4a4d55;
+  --referral-grid-card-active-bg-color: #132c2e;
+  --referral-grid-card-active-btn-bg-color: #29514b;
+  --referral-grid-card-active-border-color: #1b3632;
+  --referral-grid-card-status-color: #c2bdbd;
+  --referral-grid-card-status-active-color: #0fd250;
   /* Tooltip */
-  --referral-card-user-tooltip-bg: url(../img/card-bg.svg) no-repeat top / cover, rgba(255, 255, 255, 0.04);
-  --referral-card-user-tooltip-border: rgba(255, 255, 255, 0.04);
+  --referral-card-user-tooltip-bg: #2d313b;
+  --referral-card-user-tooltip-border: #373b44;
+  --referral-card-user-tooltip-info-bg: #555961;
+  --referral-card-user-tooltip-info-border: #4a4d55;
+  --referral-card-user-tooltip-dd-color: #c2c2c2;
+  --referral-card-user-tooltip-dt-color: #fcfcfc;
+  --referral-card-user-tooltip-title-color: #ffffff;
+  --referral-card-user-tooltip-desc-color: #d1d1d1;
 }
 
 * {
@@ -54,8 +59,7 @@
 }
 
 body {
-  background: transparent;
-  position: relative;
+  background: var(--bg-color);
 }
 
 button {
@@ -65,11 +69,12 @@ button {
 }
 
 .referral {
-  width: 100vw;
+  max-width: 100%;
   height: 100vh;
   display: flex;
   align-items: center;
   justify-content: center;
+  padding: var(--padding-lg);
 }
 .referral__wrap {
   width: 100%;
@@ -78,7 +83,7 @@ button {
   align-items: center;
   justify-content: center;
   gap: 20px;
-  padding: 16px;
+  padding: var(--padding-sm);
   position: relative;
 }
 @media (max-width: 1347.9px) {
@@ -118,7 +123,7 @@ button {
 }
 .referral__card-header-desc {
   font-size: var(--desc-size-md);
-  font-weight: 400;
+  font-weight: 300;
   color: var(--referral-card-desc-color);
 }
 .referral__grid {
@@ -191,51 +196,70 @@ button {
 }
 .referral__grid-card-user {
   width: 100%;
+  min-width: 48px;
+  min-height: 48px;
   display: flex;
   align-items: center;
   justify-content: space-between;
-  gap: 8px;
+  gap: 12px;
   padding: var(--padding-xs);
   border-radius: var(--border-radius-xs);
-  background: var(--referral-grid-card-bg-color);
+  background: var(--referral-grid-card-btn-bg-color);
+  border: 1px solid var(--referral-grid-card-btn-border-bg-color);
   box-shadow: inset 1px 1px 1px rgba(255, 255, 255, 0.05), inset -1px -1px 1px rgba(0, 0, 0, 0.25);
   -webkit-backdrop-filter: blur(12px);
           backdrop-filter: blur(12px);
 }
 .referral__grid-card-user-img {
-  width: 40px;
-  height: 40px;
+  width: 48px;
+  height: 48px;
   -o-object-fit: contain;
      object-fit: contain;
   border-radius: var(--border-radius-xs);
 }
 .referral__grid-card-user-title {
-  font-size: var(--desc-size-md);
+  font-size: var(--desc-size-lg);
   font-weight: 500;
-  color: var(--referral-card-title-color);
+  color: var(--referral-card-user-title-color);
 }
 .referral__grid-card-user-title-wrap {
   width: 100%;
   display: flex;
   flex-direction: column;
   align-items: flex-start;
-  gap: 4px;
+  gap: 0;
 }
 .referral__grid-card-user-desc {
   font-size: var(--desc-size-sm);
-  font-weight: 400;
-  color: var(--referral-card-desc-color);
+  font-weight: 300;
+  color: var(--referral-card-user-desc-color);
   text-decoration: none;
+}
+.referral__grid-card-user-desc.email {
+  display: flex;
+  align-items: center;
+  padding: 4px 0;
+  min-height: 32px;
 }
 .referral__grid-card-user-sum {
   font-size: var(--title-md);
   font-weight: 500;
-  color: var(--referral-card-desc-color);
+  color: var(--referral-card-user-sum-color);
   white-space: nowrap;
 }
 .referral__grid-card.active {
   background: var(--referral-grid-card-active-bg-color);
   border: 1px solid var(--referral-grid-card-active-border-color);
+}
+.referral__grid-card.active .referral__grid-card-user {
+  background: var(--referral-grid-card-active-btn-bg-color);
+  border: 1px solid var(--referral-grid-card-active-btn-border-color);
+}
+.referral__grid-card.active .referral__grid-card-user-title {
+  color: var(--referral-card-user-title-active-color);
+}
+.referral__grid-card.active .referral__grid-card-user-desc {
+  color: var(--referral-card-user-desc-active-color);
 }
 .referral__grid-card.active .referral__grid-status {
   color: var(--referral-grid-card-status-active-color);
@@ -267,8 +291,8 @@ button {
   width: 100%;
   max-width: 300px;
   border-radius: var(--border-radius-sm);
-  background-color: #151616;
-  border: 1px solid rgba(255, 255, 255, 0.04);
+  background-color: var(--referral-card-user-tooltip-bg);
+  border: 1px solid var(--referral-card-user-tooltip-border);
   z-index: 10000;
 }
 .referral__grid-user-tooltip[hidden] {
@@ -288,17 +312,17 @@ button {
   align-items: flex-start;
   gap: 8px;
   padding: var(--padding-xs);
-  background: var(--referral-card-user-tooltip-bg);
+  background: var(--referral-card-user-tooltip-info-bg);
   border-radius: var(--border-radius-sm);
-  border: 1px solid var(--referral-card-user-tooltip-border);
+  border: 1px solid var(--referral-card-user-tooltip-info-border);
 }
 .referral__grid-user-tooltip-title {
   display: flex;
   align-items: center;
   gap: 8px;
   font-size: var(--desc-size-md);
-  font-weight: 500;
-  color: var(--referral-card-desc-color);
+  font-weight: 400;
+  color: var(--referral-card-user-tooltip-title-color);
 }
 .referral__grid-user-tooltip-title-wrap {
   display: flex;
@@ -310,11 +334,12 @@ button {
   align-items: center;
   gap: 8px;
   font-size: var(--desc-size-lg);
-  font-weight: 500;
-  color: var(--referral-card-title-color);
+  font-weight: 400;
+  color: var(--referral-card-user-tooltip-title-color);
 }
 .referral__grid-user-tooltip-desc .info {
-  color: var(--referral-card-desc-color);
+  font-weight: 300;
+  color: var(--referral-card-user-tooltip-desc-color);
 }
 .referral__grid-user-tooltip-icon {
   width: 20px;
@@ -340,22 +365,23 @@ button {
   width: calc(30% - 8px);
   justify-content: flex-start;
   font-size: var(--desc-size-md);
-  font-weight: 400;
-  color: rgba(255, 255, 255, 0.7);
+  font-weight: 300;
+  color: var(--referral-card-user-tooltip-dd-color);
 }
 .referral__grid-user-tooltip dl dt {
   width: calc(70% - 8px);
   justify-content: flex-end;
   font-size: var(--desc-size-md);
   font-weight: 400;
-  color: rgb(255, 255, 255);
+  color: var(--referral-card-user-tooltip-dt-color);
 }
 .referral__grid-user-tooltip dl dt .desc {
-  color: rgba(255, 255, 255, 0.7);
+  font-weight: 300;
+  color: var(--referral-card-user-tooltip-dd-color);
 }
 .referral__grid-user-tooltip dl dt a {
   font-size: var(--desc-size-md);
   font-weight: 400;
-  color: rgb(255, 255, 255);
+  color: var(--referral-card-user-tooltip-dt-color);
   text-decoration: none;
 }

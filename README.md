@@ -1,61 +1,112 @@
 # Referral Tree Explorer  
-Dynamic hierarchical network visualizer with canvas-based relationship mapping.
 
-This component generates an interactive multi-level referral tree from raw structured data and converts it into a clean visual hierarchy. Nodes automatically align based on parent–child depth, spacing is calculated algorithmically, and relationships are drawn dynamically on a canvas layer with responsive scaling.
+Interactive multi-level network visualizer with automatic hierarchical layout, canvas-rendered connectors, and full panoramic navigation.  
 
-The grid is fully pannable — users can drag the map horizontally or vertically, and smart bounding keeps navigation controlled even with tooltips expanded. Each node includes a hover-activated detail panel displaying structured user metadata: rank, turnover, payouts, activity status, upline, and more.
+This component converts a flat DOM structure into a fully aligned referral tree:  
+nodes are positioned algorithmically, parent–child chains resolve into clean tiers, and all connections are drawn via a high-performance canvas overlay.  
+The interface supports both mouse and touch navigation, with controlled axis-locked panning and smart tooltip handling.  
 
-No frameworks, no external libraries — everything is pure HTML/CSS/JavaScript.
+There are no external dependencies — the entire engine is implemented in pure HTML, SCSS, and vanilla JavaScript.  
 
+🔗 [**Live Demo**](https://anzhelikaspekter.github.io/Referral-Network-Visualization-System/)  
+🎨 [**Live Code**](https://codepen.io/anzhelikaspekter/pen/RNaywQL)  
+📃 [**Details Case**](anzhelikaspekter.notion.site/Referral-Tree-Visualization-System-2c0d69b00e74807fbd52d89277823433?pvs=74)
 
+---
 
-## Features
+## Features  
 
-1. **Dynamic tree generation from raw data**  
-   Parses DOM, maps parent relations (data-id, data-parent).
+### 1. **Automatic Tree Construction**  
+- Parses DOM nodes annotated with data-id and data-parent  
+- Builds internal graph model  
+- Identifies root, levels, and child sets  
 
-2. **Automatic layout calculation**  
-   Distributes nodes across rows & columns based on branching depth.
+### 2. **Dynamic Layout Algorithm**  
+- Distributes nodes across rows based on depth  
+- Calculates optimal column placement per parent  
+- Reconstructs DOM to preserve structural accuracy  
+- Supports large and uneven referral chains  
 
-3. **Canvas-drawn connectors**  
-   Curves + lines drawn between tiers in real-time.
+### 3. **Canvas-Based Connectors**  
+- Draws lines between tiers in real-time  
+- Aligns connection points to card centers  
+- Updates automatically on resize, panning, or tooltip changes  
+- GPU-accelerated via transforms for smooth rendering  
 
-4. **Status-based UI styling**  
-   Active/inactive modifies card state + indicator.
+### 4. **Advanced Tooltip System**  
+- Tooltips detach from node and move to the canvas layer  
+- Dynamically positioned relative to card + grid transform  
+- Never clip through edges; recalculates bounds on open/close  
+- Works with both mouse and touch interactions  
 
-5. **Interactive tooltips**  
-   Detached on-open, overlaid above canvas, follow grid transform.
+### 5. **Panoramic Navigation**  
+- Drag to pan (mouse + touch)  
+- Axis-lock detection for natural movement  
+- Hard boundary clamping  
+- Auto-centering on initial load  
+- Smooth integration with tooltip engine & line renderer  
 
-6. **Responsive panning system**  
-   Mouse + touch movement with axis-lock logic.
+### 6. **Pure Vanilla Implementation**  
+- No frameworks  
+- No SVG renderers  
+- No layout libraries  
+- Works in any static environment (GitHub Pages, offline bundles, dashboards)  
 
-7. **Zero dependencies**  
-   No SVG libraries, no frameworks, no UI kits.
+---
 
+## Technical Breakdown  
 
+### **Tree Parsing & Mapping**  
+The system scans .referral__grid-item elements, builds a node graph, resolves parent chains, then organizes them into ordered tree levels.  
 
-## Technical Breakdown
-This interface runs through several execution phases:
+### **Layout Reconstruction**  
+After determining the tree’s structure, the component rebuilds the grid dynamically, creating a stable and symmetric hierarchy regardless of data irregularities.  
 
-1. **Tree Parsing & Mapping**  
-   Builds a graph based on `data-id` / `data-parent`, resolves child chains and root.
+### **Canvas Rendering Engine**  
+All connectors are drawn onto a dedicated canvas layer:  
+- multi-child branching support  
+- midpoint horizontal rails  
+- responsive recalculation on all movement events  
 
-2. **Grid Reconstruction**  
-   Calculates levels, assigns positions, then rebuilds the DOM with correct layout.
+### **Panorama Controller**  
+Custom drag engine that:  
+- handles both pointer and touch events  
+- detects primary axis automatically  
+- clamps panning within content limits  
+- synchronizes with line rendering & tooltip placement  
 
-3. **Canvas Rendering**  
-   Draws relational links between nodes dynamically for high-depth structures.
+---
 
-4. **Panoramic Navigation**  
-   Custom drag controller for smooth panning across any network size.
+## Installation & Usage  
 
+Include the generated CSS and JS:  
 
+```html
+<link rel="stylesheet" href="css/referral-tree.css">
+<script src="js/referral-tree.js" defer></script>
+```  
 
-## Where this component fits
+Ensure each grid node is structured as:  
+
+```html
+<div class="referral__grid-item" data-id="3" data-parent="1">
+    <article class="referral__grid-card" data-user="3">
+        ...
+    </article>
+</div>
+```  
+
+No further configuration required. The entire system initializes automatically on page load.  
+
+---
+
+## Use Cases  
+
 Suitable for:  
-▸ referral/affiliate dashboards  
-▸ partner tree analytics  
-▸ MLM visualization layers  
-▸ organization charts & lineage structures  
-▸ user-growth & revenue flow mapping  
-▸ genealogy or data structure graphs
+- Referral / affiliate dashboards  
+- Partner tree analytics  
+- MLM compensation structures  
+- Team / org charts  
+- Growth mapping  
+- Hierarchical data visualization  
+- Ancestry or lineage diagrams  
