@@ -82,8 +82,8 @@ Custom drag engine that:
 Include the generated CSS and JS:  
 
 ```html
-<link rel="stylesheet" href="css/referral-tree.css">
-<script src="js/referral-tree.js" defer></script>
+<link rel="stylesheet" href="css/style.min.css">
+<script src="js/script.js" defer></script>
 ```  
 
 Ensure each grid node is structured as:  
