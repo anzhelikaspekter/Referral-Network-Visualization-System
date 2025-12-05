@@ -8,7 +8,7 @@ The interface supports both mouse and touch navigation, with controlled axis-loc
 
 There are no external dependencies — the entire engine is implemented in pure HTML, SCSS, and vanilla JavaScript.  
 
-🔗 [**Live Demo**](https://anzhelikaspekter.github.io/Referral-Network-Visualization-System/)  
+🔗 [**Live Demo**](https://anzhelikaspekter.github.io/Referral-Network-Visualization-System/prod/)  
 🎨 [**Live Code**](https://codepen.io/anzhelikaspekter/pen/RNaywQL)  
 📃 [**Details Case**](https://anzhelikaspekter.notion.site/Referral-Tree-Visualization-System-2c0d69b00e74807fbd52d89277823433?pvs=74)  
 
