@@ -10,7 +10,7 @@ There are no external dependencies — the entire engine is implemented in pure 
 
 🔗 [**Live Demo**](https://anzhelikaspekter.github.io/Referral-Network-Visualization-System/)  
 🎨 [**Live Code**](https://codepen.io/anzhelikaspekter/pen/RNaywQL)  
-📃 [**Details Case**](anzhelikaspekter.notion.site/Referral-Tree-Visualization-System-2c0d69b00e74807fbd52d89277823433?pvs=74)
+📃 [**Details Case**](https://anzhelikaspekter.notion.site/Referral-Tree-Visualization-System-2c0d69b00e74807fbd52d89277823433?pvs=74)  
 
 ---
 
